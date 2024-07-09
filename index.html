@@ -117,7 +117,7 @@
     <script>
     async function downloadImage() {
         try {
-            const canvas = await html2canvas(document.getElementById('container'));
+            const canvas = await html2canvas(document.getElementById('container'), { useCORS: true });
             var link = document.createElement('a');
             link.download = 'character_selection.png';
             link.href = canvas.toDataURL('image/png');
@@ -139,7 +139,7 @@
                 break;
             case "paul":
                 document.getElementById("img").src = "images/paul.png";
-                document.getElementById("name").innerHTML = "Paul Phoenix"; // Corrected spelling
+                document.getElementById("name").innerHTML = "Paul Phoenix";
                 break;
             case "hwoarang":
                 document.getElementById("img").src = "images/hwoarang.png";
