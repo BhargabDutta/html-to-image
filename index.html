@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Character Selection MOO ICT</title>
+    <style>
+    #container, #info {
+        width: 700px;
+        height: 600px;
+        margin: 10px auto;
+        background-color: red;
+        background: url("images/background.jpg");
+        background-size: 150px 150px;
+        animation: scroll 5s linear infinite;
+        border: 10px solid orange;
+        border-radius: 20px;
+        text-align: center;
+    }
+    #info {
+        height: 100px;
+    }
+    @keyframes scroll {
+        to {
+            background-position: -150px -150px;
+        }
+    }
+    #image {
+        height: 88%;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+    img {
+        margin-top: 10px;
+        height: auto;
+        max-width: 650px;
+        animation: gloweffect 2s infinite;
+    }
+    @keyframes gloweffect {
+        0%, 100% {
+            filter: drop-shadow(0 0 0.35rem rgb(0, 174, 255));
+        }
+        25% {
+            filter: drop-shadow(0 0 0.65rem rgb(0, 255, 4));
+        }
+        50% {
+            filter: drop-shadow(0 0 0.85rem rgb(255, 0, 0));
+        }
+    }
+    #name {
+        position: absolute;
+        z-index: 99999;
+        font-size: 60pt;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        filter: drop-shadow(0 0 0.90rem rgb(0, 0, 0));
+        left: 25%;
+        bottom: 0%;
+        color: white;
+        font-weight: bold;
+        -webkit-text-stroke: 3px black;
+    }
+    button {
+        position: relative;
+        display: inline-block;
+        padding: 15px 25px;
+        color: #fff;
+        font-size: 25px;
+        font-family: sans-serif;
+        font-weight: bold;
+        border-radius: 3px;
+        box-shadow: 0px 1px 4px -2px #333;
+        text-shadow: 0px -1px #333;
+        border-radius: 10px;
+    }
+    button:after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: calc(100% - 4px);
+        height: 50%;
+        background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2));
+        border-radius: 10px;
+    }
+    button:hover {
+        color: black;
+        font-size: 28px;
+    }
+    #jin {
+        background-image: linear-gradient(blue, skyblue);
+    }
+    #paul {
+        background-image: linear-gradient(red, salmon);
+    }
+    #hwoarang {
+        background-image: linear-gradient(rgb(255, 145, 0), rgb(235, 232, 135));
+    }
+    #bryan {
+        background-image: linear-gradient(rgb(195, 0, 255), rgb(230, 135, 235));
+    }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="image">
+            <h1 id="name">Jin Kazama</h1>
+            <img id="img" src="images/jin.png" alt="">
+        </div>
+        <div id="controls">
+            <button id="jin" onclick="ChangeCharacter('jin')">Jin</button>
+            <button id="paul" onclick="ChangeCharacter('paul')">Paul</button>
+            <button id="hwoarang" onclick="ChangeCharacter('hwoarang')">Hwoarang</button>
+            <button id="bryan" onclick="ChangeCharacter('bryan')">Bryan</button>
+            <button onclick="downloadImage()">Download Image</button>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script>
+    async function downloadImage() {
+        try {
+            const canvas = await html2canvas(document.getElementById('container'));
+            var link = document.createElement('a');
+            link.download = 'character_selection.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        } catch (error) {
+            console.error('Error generating image:', error);
+        }
+    }
+
+    function ChangeCharacter(character) {
+        switch (character) {
+            case "bryan":
+                document.getElementById("img").src = "images/bryan.png";
+                document.getElementById("name").innerHTML = "Bryan Fury";
+                break;
+            case "jin":
+                document.getElementById("img").src = "images/jin.png";
+                document.getElementById("name").innerHTML = "Jin Kazama";
+                break;
+            case "paul":
+                document.getElementById("img").src = "images/paul.png";
+                document.getElementById("name").innerHTML = "Paul Phoenix"; // Corrected spelling
+                break;
+            case "hwoarang":
+                document.getElementById("img").src = "images/hwoarang.png";
+                document.getElementById("name").innerHTML = "Hwoarang";
+                break;
+        }
+    }
+    </script>
+</body>
+</html>
