@@ -7,7 +7,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         body {
-            background-image: linear-gradient(white, black);
+            background-image: url("images/bg.jpg");
         }
 
         .passcode-button {
@@ -52,56 +52,80 @@
 </head>
 
 <body>
-    <h1 style="text-align: center; padding: 10px;"> Generate and Download Your Badge to proceed</h1>
+    <!-- <h1 style="text-align: center; padding: 10px;"> Generate and Download Your Badge to proceed</h1> -->
     <div style="display: flex; flex-direction: row; width: fit-content; position: relative; left: 0; right: 0; margin: auto; padding: 2%;">
-        <div id="capture" style="padding: 10px; background: transparent;">
-            <div id="container"
-                style="width: 300px; height: 500px; margin: 10px; background-image: url(images/idcard.png); border-radius: 20px; text-align: center; background-size: contain; background-position: center; background-repeat: no-repeat;">
-                <div id="image" style="height: 100%; width: 100%; overflow: hidden; position: relative;">
-                    <div id="name"
-                        style="position: absolute; z-index: 99999; font-size: 20pt; font-family: sans-serif; color: rgb(255, 0, 0); font-weight: bold; margin-top: 250px; text-align: center; width: 100%;">
-                        Your Name</div>
+        <div style="background-image: url(images/frame.png); background-size: contain; background-position: center; background-repeat: no-repeat; width: 650px; height: 650px;">
+            <div id="capture" style="padding: 10px; background: transparent;">
+                <div id="container"
+                    style="width: 300px; height: 500px; margin: 10px; background-image: url(images/idcard.png); border-radius: 20px; text-align: center; background-size: contain; background-position: center; background-repeat: no-repeat; position: relative; left: 0; right: 0; margin: auto; top: 80px;">
+                    <div id="image" style="height: 100%; width: 100%; overflow: hidden; position: relative;">
+                        <div id="name"
+                            style="position: absolute; z-index: 99999; font-size: 20pt; font-family: sans-serif; color: rgb(0, 0, 0); font-weight: bold; margin-top: 250px; text-align: center; width: 100%;">
+                            Your Name</div>
 
-                    <div class="idinfo" style="position: absolute; z-index: 99999; font-size: 10pt; font-family: sans-serif; color: rgb(0, 0, 0); margin-top: 350px; text-align: left; width: 100%;">
-                        <div class="info email" style="padding: 10px; margin: 10px; background-color: #379680; width: fit-content;"> Email: xyz@gmail.com</div>
-                        <div class="info phone" style="padding: 10px; margin: 10px; background-color: #379680; width: fit-content;"> Phone : 123456789</div>
+                        <div id="branch"
+                            style="position: absolute; z-index: 99999; font-size: 10pt; font-family: sans-serif; color: rgb(0, 0, 0); font-weight: bold; margin-top: 280px; text-align: center; width: 100%;">
+                            Branch</div>
+
+                        <div class="idinfo"
+                            style="position: absolute; z-index: 99999; font-size: 10pt; font-family: sans-serif; color: rgb(0, 0, 0); margin-top: 320px; text-align: left; width: 100%;">
+                            <div class="info"
+                                style="padding: 10px; margin: 10px; background-color: #379680; width: fit-content;"> ID:
+                                123456789</div>
+                            <div class="info email"
+                                style="padding: 10px; margin: 10px; background-color: #379680; width: fit-content;">
+                                Email: xyz@gmail.com</div>
+                            <div class="info phone"
+                                style="padding: 10px; margin: 10px; background-color: #379680; width: fit-content;">
+                                Phone : 123456789</div>
+                        </div>
+                        <img id="img" src="images/default.png" alt=""
+                            style="margin-top: 120px; height: auto; width: 100px;">
                     </div>
-                    <img id="img" src="images/default.png" alt="" style="margin-top: 120px; height: auto; width: 100px;">
                 </div>
             </div>
         </div>
-        <div id="controls" style="margin-top: 20px;">
-            <div style="width: 500px; height: auto;">
+        <div id="controls" style="border: 3px solid white; border-radius: 20px; padding: 20px;">
+            <div style="width: 500px; height: auto; color: white;">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Enter Your Name</label>
                     <input type="text" class="form-control" id="userName" placeholder="Name" oninput="updateBadge()">
                 </div>
                 <div class="mb-3">
+                    <label for="exampleFormControlInput4" class="form-label">Enter Your Branch</label>
+                    <input type="text" class="form-control" id="userBranch" placeholder="Branch"
+                        oninput="updateBadge()">
+                </div>
+                <div class="mb-3">
                     <label for="exampleFormControlInput2" class="form-label">Enter Your Email</label>
-                    <input type="email" class="form-control" id="userEmail" placeholder="Email" oninput="updateBadge()">
+                    <input type="email" class="form-control" id="userEmail" placeholder="Email"
+                        oninput="updateBadge()">
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput3" class="form-label">Enter Your Phone Number</label>
-                    <input type="text" class="form-control" id="userPhone" placeholder="Phone Number" oninput="updateBadge()">
+                    <input type="text" class="form-control" id="userPhone" placeholder="Phone Number"
+                        oninput="updateBadge()">
                 </div>
+               
             </div>
-            <div> Choose your gender</div>
+            <div style="color: white;"> Choose your gender</div>
             <div id="male" onclick="ChangeCharacter('male')"
                 style="position: relative; display: inline-block; color: #fff; font-size: 15px; padding: 10px; border-radius: 13px; background-image: linear-gradient(blue, rgb(0, 110, 153)); cursor: pointer;">Male</div>
             <div id="female" onclick="ChangeCharacter('female')"
                 style="position: relative; display: inline-block; color: #fff; font-size: 15px; padding: 10px; border-radius: 13px; background-image: linear-gradient(blue, rgb(0, 110, 153)); cursor: pointer;">Female</div>
             <div>
                 <div onclick="getAndDisplayPasscode()" id="passcodeButton"
-                    style="position: relative; display: none; color: #fff; font-size: 15px; padding: 10px; border-radius: 13px; background-image: linear-gradient(blue, rgb(0, 110, 153)); cursor: pointer; margin-top: 20px;">Download Image</div>
+                    style="position: relative; display: none; color: #fff; font-size: 15px; padding: 10px; border-radius: 13px; background-image: linear-gradient(blue, rgb(0, 110, 153)); cursor: pointer; margin-top: 20px;">Download
+                    Image</div>
             </div>
             <div class="passcode-container" id="passcodeContainer">
                 <div id="passcodeText" style="color: white;">Passcode: hello world</div>
                 <div onclick="copyPasscode()" class="copy-button">Copy to Clipboard</div>
             </div>
-            <div id="nextButton"
+            <!-- <div id="nextButton"
                 style="display: none; color: #fff; font-size: 15px; padding: 10px; border-radius: 13px; background-image: linear-gradient(rgb(0, 128, 122), rgb(0, 110, 153)); cursor: pointer; margin-top: 20px; width: 100%; text-align: center;">
                 Next
-            </div>
+            </div> -->
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -110,9 +134,10 @@
             var userName = document.getElementById("userName").value.trim();
             var userEmail = document.getElementById("userEmail").value.trim();
             var userPhone = document.getElementById("userPhone").value.trim();
+            var userBranch = document.getElementById("userBranch").value.trim();
             var passcodeButton = document.getElementById('passcodeButton');
 
-            if (userName !== '' && userEmail !== '' && userPhone !== '') {
+            if (userName !== '' && userEmail !== '' && userPhone !== '' && userBranch !== '') {
                 passcodeButton.style.display = 'inline-block';
             } else {
                 passcodeButton.style.display = 'none';
@@ -123,8 +148,10 @@
             var userName = document.getElementById("userName").value.trim();
             var userEmail = document.getElementById("userEmail").value.trim();
             var userPhone = document.getElementById("userPhone").value.trim();
+            var userBranch = document.getElementById("userBranch").value.trim();
 
             document.getElementById("name").innerHTML = userName ? userName : "Your Name";
+            document.getElementById("branch").innerHTML = userBranch ? userBranch : "Branch";
             document.querySelector('.idinfo .email').innerHTML = userEmail ? "Email: " + userEmail : "Email: xyz@gmail.com";
             document.querySelector('.idinfo .phone').innerHTML = userPhone ? "Phone: " + userPhone : "Phone: 123456789";
 
@@ -164,21 +191,28 @@
 
         function ChangeCharacter(character) {
             var userName = document.getElementById("userName").value;
+            var userBranch = document.getElementById("userBranch").value;
             var characterName = "";
+            var characterBranch = "";
 
             switch (character) {
                 case "male":
                     document.getElementById("img").src = "images/male.png";
                     characterName = "Jin Kazama";
+                    characterBranch = "Branch A";
                     break;
                 case "female":
                     document.getElementById("img").src = "images/female.png";
                     characterName = "Paul Phoenix";
+                    characterBranch = "Branch B";
                     break;
             }
 
-            // Update the name with user input
+            // Update the name with user input or character name
             document.getElementById("name").innerHTML = userName ? userName : characterName;
+
+            // Update the branch with user input or character branch
+            document.getElementById("branch").innerHTML = userBranch ? userBranch : characterBranch;
 
             // Check if input is filled after character change
             checkInputFilled();
