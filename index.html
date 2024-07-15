@@ -7,7 +7,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         body {
-            background-image: url("images/bg.jpg");
+            background-color: black;
         }
 
         .passcode-button {
@@ -48,6 +48,20 @@
             background-image: linear-gradient(rgb(0, 174, 255), rgb(0, 110, 153));
             cursor: pointer;
         }
+
+        #copiedMessage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999999999;
+    display: none;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    text-align: center;
+    padding-top: 20vh; /* Adjust vertical padding as needed */
+}
+
     </style>
 </head>
 
@@ -122,12 +136,19 @@
                 <div id="passcodeText" style="color: white;">Passcode: hello world</div>
                 <div onclick="copyPasscode()" class="copy-button">Copy to Clipboard</div>
             </div>
+
             <!-- <div id="nextButton"
                 style="display: none; color: #fff; font-size: 15px; padding: 10px; border-radius: 13px; background-image: linear-gradient(rgb(0, 128, 122), rgb(0, 110, 153)); cursor: pointer; margin-top: 20px; width: 100%; text-align: center;">
                 Next
             </div> -->
         </div>
     </div>
+
+<!-- New div to show after copying passcode -->
+<div id="copiedMessage" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 999999999; display: none; background-color: rgba(255, 255, 255, 0.74); text-align: center; padding-top: 20vh;">
+   
+</div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
         function checkInputFilled() {
@@ -176,18 +197,18 @@
         }
 
         function copyPasscode() {
-            var passcodeText = "hello world";
-            var tempInput = document.createElement("input");
-            tempInput.value = passcodeText;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
-            alert("Passcode copied to clipboard!");
+    var passcodeText = "hello world";
+    var tempInput = document.createElement("input");
+    tempInput.value = passcodeText;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+    
+    // Show the copied message div
+    document.getElementById('copiedMessage').style.display = 'block';
+}
 
-            // Show the nextButton after copying the passcode
-            document.getElementById('nextButton').style.display = 'inline-block';
-        }
 
         function ChangeCharacter(character) {
             var userName = document.getElementById("userName").value;
